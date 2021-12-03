@@ -1,17 +1,17 @@
 ## Advent of Code 2021
 ## Day 3 Part 2
 f = [l.rstrip() for l in open('day3.txt')]
-print ("There are " + str(len(f)) + " values")
+print ("There are " + str(len(f)) + " lines in our data")
 
 def calculateRating(method):
     d = f
     match method:
         case "Carbon":
             defaultVal = "0"
-            useVal = "1"
+            useThisVal = "1"
         case "Oxygen":
             defaultVal = "1"
-            useVal = "0"
+            useThisVal = "0"
     for col in range(0,len(d[0])):
         e = []
         colCount = 0
@@ -19,7 +19,7 @@ def calculateRating(method):
             colCount = colCount + int(d[row][col])
         colVal = defaultVal
         if (colCount < (len(d)/2)):
-            colVal = useVal
+            colVal = useThisVal
 
         for row in range(0,len(d)):
             if (d[row][col] == colVal):
@@ -29,7 +29,7 @@ def calculateRating(method):
         else:
             continue
     outputValue = ''.join(d)
-    print (method + " = " + str(outputValue))
+    print ('{:<7} = '.format(method) + str(outputValue) + " (" + str(int(outputValue,2)) + ")")
     return outputValue
 
 o2  = calculateRating("Oxygen")
