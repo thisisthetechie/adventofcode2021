@@ -3,49 +3,37 @@
 f = [l.rstrip() for l in open('day3.txt')]
 print ("There are " + str(len(f)) + " values")
 
-# Get the Oxygen Value
-d = f
-for col in range(0,len(d[0])):
-    e = []
-    colCount = 0
-    for row in range(0,len(d)):
-        colCount = colCount + int(d[row][col])
-    colVal = "1"
-    if (colCount < (len(d)/2)):
-        colVal = "0"
+def calculateRating(method):
+    d = f
+    match method:
+        case "Carbon":
+            defaultVal = "0"
+            useVal = "1"
+        case "Oxygen":
+            defaultVal = "1"
+            useVal = "0"
+    for col in range(0,len(d[0])):
+        e = []
+        colCount = 0
+        for row in range(0,len(d)):
+            colCount = colCount + int(d[row][col])
+        colVal = defaultVal
+        if (colCount < (len(d)/2)):
+            colVal = useVal
 
-    for row in range(0,len(d)):
-        if (d[row][col] == colVal):
-            e.append(d[row])
-    if (len(e) > 0):
-        d = e
-    else:
-        continue
+        for row in range(0,len(d)):
+            if (d[row][col] == colVal):
+                e.append(d[row])
+        if (len(e) > 0):
+            d = e
+        else:
+            continue
+    outputValue = ''.join(d)
+    print (method + " = " + str(outputValue))
+    return outputValue
 
-print ("Oxygen = " + str(d))
-o2 = ''.join(d)
-
-# Get the Carbon Dioxide Value
-d = f
-for col in range(0,len(d[0])):
-    e = []
-    colCount = 0
-    for row in range(0,len(d)):
-        colCount = colCount + int(d[row][col])
-    colVal = "0"
-    if (colCount < (len(d)/2)):
-        colVal = "1"
-
-    for row in range(0,len(d)):
-        if (d[row][col] == colVal):
-            e.append(d[row])
-    if (len(e) > 0):
-        d = e
-    else:
-        continue
-
-print ("Carbon = " + str(d))
-co2 = ''.join(d)
+o2  = calculateRating("Oxygen")
+co2 = calculateRating("Carbon")
 
 # Output the Rating
 print ("Oxygen Rating = " + str(int(o2,2) * int(co2,2)))
