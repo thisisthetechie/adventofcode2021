@@ -1,6 +1,8 @@
 ## Advent of Code 2021
 ## Day 2 Part 2
-f = [l.rstrip() for l in open('day2.txt')]
+import aoc_core as aoc
+f = aoc.fd
+
 h = 0
 d = 0
 a = 0

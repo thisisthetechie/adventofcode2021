@@ -1,7 +1,7 @@
 ## Advent of Code 2021
 ## Day 3 Part 1
-f = [l.rstrip() for l in open('day3.txt')]
-print ("There are " + str(len(f)) + " lines in our data")
+import aoc_core as aoc
+f = aoc.fd
 
 def calculatePower(method):
     d = f

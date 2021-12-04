@@ -1,6 +1,8 @@
 ## Advent of Code 2021
 ## Day 1 Part 1
-f = [l.rstrip() for l in open('day1.txt')]
+import aoc_core as aoc
+f = aoc.fe
+
 y = f[0]
 d = 0
 print (y + " (Initial Value)")

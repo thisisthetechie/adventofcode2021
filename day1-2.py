@@ -1,6 +1,8 @@
 ## Advent of Code 2021
 ## Day 1 Part 2
-f = [l.rstrip() for l in open('day1.txt')]
+import aoc_core as aoc
+f = aoc.fd
+
 y = 0
 d = 0
 for x in range(2, len(f)):
