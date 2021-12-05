@@ -25,13 +25,13 @@ for v in chartData:
         y = v[1]
         for row in x:
             chartOut[y][row] += 1
-
     else:
         stepX = 1 if v[0]<v[2] else -1
         stepY = 1 if v[1]<v[3] else -1
-        #if (abs(v[0]-v[2]) == abs(v[1]-v[3])):
         for count in range(abs(v[0]-v[2])+1):
-            chartOut[v[1]+(stepY * count)][v[0]+(stepX * count)] += 1
+            row = v[0]+(stepX * count)
+            col = v[1]+(stepY * count)
+            chartOut[col][row] += 1
 
 
 print (chartOut)
