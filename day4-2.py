@@ -20,8 +20,9 @@ def checkNumbers(board):
         for boardNo in range(boardCount):
             for row in range(5):
                 if (numpy.char.count(board[boardNo][row], 'x').sum() == 5) or (numpy.char.count(numpy.swapaxes(board,1,2)[boardNo][row], 'x').sum() == 5):
-                    completedBoards.append(boardNo)
-                    if (len(numpy.unique(completedBoards, return_counts = True)[1].astype(int)) == boardCount):
+                    if not boardNo in completedBoards:
+                        completedBoards.append(boardNo)
+                    if (len(completedBoards) == boardCount):
                         board = numpy.where(board == 'x', 0, board)
                         boardSum = board[boardNo].astype(int).sum()
                         return (boardSum * int(n))
